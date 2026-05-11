@@ -2,7 +2,8 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
 
-<img width="959" height="447" alt="image" src="https://github.com/user-attachments/assets/9f17847d-d59d-4463-9e32-bd664c158593" />
+<img width="959" height="448" alt="image" src="https://github.com/user-attachments/assets/069acefc-9b12-456f-8e48-d6ce2b33e537" />
+
 
 
 ## Development server
