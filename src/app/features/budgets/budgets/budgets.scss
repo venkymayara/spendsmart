@@ -1,0 +1,99 @@
+.budgets { padding: 24px; }
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #f0effe; }
+}
+
+.warn-badge {
+  background: rgba(224,92,122,0.15);
+  color: #e05c7a;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.overview-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.overview-card {
+  background: #12121a;
+  border: 1px solid rgba(124,106,247,0.18);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+
+.ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #8885a8; margin-bottom: 8px; }
+.ov-value { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #f0effe;
+  &.spent { color: #e05c7a; }
+  &.good  { color: #3de8b0; }
+}
+
+.panel {
+  background: #12121a;
+  border: 1px solid rgba(124,106,247,0.18);
+  border-radius: 20px;
+  padding: 8px 24px;
+}
+
+.budget-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #22223a;
+  &:last-child { border-bottom: none; }
+}
+
+.b-icon { font-size: 22px; flex-shrink: 0; }
+
+.b-info { flex: 1; min-width: 0; }
+.b-name { font-size: 13px; font-weight: 500; color: #f0effe; margin-bottom: 8px; }
+
+.b-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.b-track {
+  flex: 1;
+  height: 6px;
+  background: #22223a;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.b-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+
+.b-pct {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8885a8;
+  width: 36px;
+  text-align: right;
+  &.over { color: #e05c7a; }
+}
+
+.b-amounts { text-align: right; flex-shrink: 0; }
+.b-spent {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f0effe;
+  &.over { color: #e05c7a; }
+}
+.b-limit { font-size: 11px; color: #8885a8; margin-top: 2px; }

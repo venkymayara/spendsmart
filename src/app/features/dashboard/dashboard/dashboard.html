@@ -1,0 +1,72 @@
+<div class="dashboard">
+
+  <!-- Summary Cards -->
+  <div class="summary-grid">
+    <app-summary-card
+      label="Monthly Income"
+      [value]="data.totalIncome | inr"
+      sub="Salary + Freelance"
+      tag="+₹12k freelance"
+      tagType="good"
+      accentColor="#3de8b0"
+    />
+    <app-summary-card
+      label="Total Spent"
+      [value]="data.totalSpent | inr"
+      sub="Across all sources"
+      [tag]="(data.totalSpent / data.totalIncome * 100 | number:'1.0-0') + '% of income'"
+      tagType="warn"
+      accentColor="#e05c7a"
+    />
+    <app-summary-card
+      label="Net Savings"
+      [value]="data.totalSavings | inr"
+      sub="This month"
+      [tag]="data.savingsRate + '% rate'"
+      [tagType]="data.savingsRate >= 30 ? 'good' : 'warn'"
+      accentColor="#7c6af7"
+    />
+    <app-summary-card
+      label="Transactions"
+      value="47"
+      sub="This month"
+      tag="↓ 5 vs last month"
+      tagType="good"
+      accentColor="#f5a623"
+    />
+  </div>
+
+  <!-- Two column -->
+  <div class="two-col">
+
+    <!-- Category Breakdown -->
+    <div class="panel">
+      <div class="panel-title">Spend by Category <span>May 2025</span></div>
+      <div class="bar-row" *ngFor="let cat of spendByCategory">
+        <div class="bar-label">{{ cat.name }}</div>
+        <div class="bar-track">
+          <div class="bar-fill" [style.width]="barWidth(cat.amount)" [style.background]="cat.color"></div>
+        </div>
+        <div class="bar-amount" [style.color]="cat.color">{{ cat.amount | inr }}</div>
+      </div>
+    </div>
+
+    <!-- Weekly Spend -->
+    <div class="panel">
+      <div class="panel-title">Daily Spend <span>This week</span></div>
+      <div class="bar-chart">
+        <div class="bar-col" *ngFor="let val of weeklySpend; let i = index">
+          <div class="bar-block"
+            [style.height]="barHeight(val)"
+            [class.active]="i === 3">
+          </div>
+          <span class="bar-day">{{ weeklyLabels[i] }}</span>
+        </div>
+      </div>
+      <div class="chart-note">
+        Peak: <strong>Thursday ₹8,900</strong> · Avg: <strong>₹5,814/day</strong>
+      </div>
+    </div>
+
+  </div>
+</div>

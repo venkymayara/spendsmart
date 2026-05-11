@@ -1,0 +1,20 @@
+<div class="savings">
+  <div class="page-header">
+    <h2>Savings Tips</h2>
+    <span class="sub-head">Personalised to your May 2025 spending</span>
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip-card" *ngFor="let tip of tips">
+      <div class="tip-top">
+        <span class="tip-icon">{{ tip.icon }}</span>
+        <span class="tip-tag" [style.background]="tagColors[tip.tag] + '22'" [style.color]="tagColors[tip.tag]">
+          {{ tip.tag }}
+        </span>
+      </div>
+      <div class="tip-title">{{ tip.title }}</div>
+      <div class="tip-desc">{{ tip.desc }}</div>
+      <div class="tip-save">{{ tip.save }}</div>
+    </div>
+  </div>
+</div>

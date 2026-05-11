@@ -1,0 +1,25 @@
+<div class="shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-icon">₹</span>
+      <span class="logo-text">SpendSmart</span>
+    </div>
+    <nav>
+      <a
+        *ngFor="let item of nav"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        class="nav-item">
+        <span class="nav-icon">{{ item.icon }}</span>
+        <span class="nav-label">{{ item.label }}</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">May 2025</div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <router-outlet />
+  </main>
+</div>

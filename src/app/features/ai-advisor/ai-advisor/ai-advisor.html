@@ -1,0 +1,55 @@
+<div class="advisor">
+  <div class="page-header">
+    <div class="avatar">✦</div>
+    <div>
+      <h2>AI Financial Advisor</h2>
+      <p>Powered by Claude · Personalised to your spending</p>
+    </div>
+  </div>
+
+  <!-- Chat -->
+  <div class="chat-area">
+    <div
+      *ngFor="let msg of messages()"
+      class="message"
+      [class.user]="msg.role === 'user'"
+      [class.assistant]="msg.role === 'assistant'">
+      <div class="bubble">{{ msg.content }}</div>
+    </div>
+
+    <div class="message assistant" *ngIf="loading()">
+      <div class="bubble loading">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Suggestions -->
+  <div class="suggestions" *ngIf="messages().length <= 2">
+    <button
+      class="suggestion-btn"
+      *ngFor="let s of suggestions"
+      (click)="send(s)">
+      {{ s }}
+    </button>
+  </div>
+
+  <!-- Input -->
+  <div class="input-area">
+    <textarea
+      class="ai-input"
+      #adviceInput
+      rows="2"
+      placeholder="Ask anything about your finances..."
+      [value]="inputText()"
+      (input)="setInput(adviceInput.value)"
+      (keydown)="onKey($event)">
+    </textarea>
+    <button
+      class="send-btn"
+      (click)="send()"
+      [disabled]="loading() || !inputText().trim()">
+      Send
+    </button>
+  </div>
+</div>

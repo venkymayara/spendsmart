@@ -1,0 +1,50 @@
+<div class="budgets">
+  <div class="page-header">
+    <h2>Budgets</h2>
+    <span class="warn-badge" *ngIf="overBudgetCount() > 0">
+      {{ overBudgetCount() }} over budget
+    </span>
+  </div>
+
+  <!-- Overview -->
+  <div class="overview-row">
+    <div class="overview-card">
+      <div class="ov-label">Total Budget</div>
+      <div class="ov-value">{{ totalBudget() | inr }}</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-label">Total Spent</div>
+      <div class="ov-value spent">{{ totalSpentOnBudgets() | inr }}</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-label">Remaining</div>
+      <div class="ov-value good">{{ (totalBudget() - totalSpentOnBudgets()) | inr }}</div>
+    </div>
+  </div>
+
+  <!-- Budget Rows -->
+  <div class="panel">
+    <div class="budget-row" *ngFor="let b of budgets">
+      <div class="b-icon">{{ b.icon }}</div>
+      <div class="b-info">
+        <div class="b-name">{{ b.category }}</div>
+        <div class="b-progress-row">
+          <div class="b-track">
+            <div
+              class="b-fill"
+              [style.width]="pct(b.spent, b.limit) + '%'"
+              [style.background]="isOver(b.spent, b.limit) ? '#e05c7a' : b.color">
+            </div>
+          </div>
+          <span class="b-pct" [class.over]="isOver(b.spent, b.limit)">
+            {{ pct(b.spent, b.limit) }}%
+          </span>
+        </div>
+      </div>
+      <div class="b-amounts">
+        <div class="b-spent" [class.over]="isOver(b.spent, b.limit)">{{ b.spent | inr }}</div>
+        <div class="b-limit">of {{ b.limit | inr }}</div>
+      </div>
+    </div>
+  </div>
+</div>

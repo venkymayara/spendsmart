@@ -1,0 +1,64 @@
+.savings { padding: 24px; }
+
+.page-header {
+  margin-bottom: 24px;
+  h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #f0effe; }
+}
+
+.sub-head { font-size: 13px; color: #8885a8; display: block; margin-top: 4px; font-style: italic; }
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.tip-card {
+  background: #12121a;
+  border: 1px solid rgba(124,106,247,0.18);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(124,106,247,0.15);
+  }
+}
+
+.tip-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tip-icon { font-size: 26px; }
+
+.tip-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.tip-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0effe;
+}
+
+.tip-desc {
+  font-size: 13px;
+  color: #8885a8;
+  line-height: 1.6;
+}
+
+.tip-save {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3de8b0;
+  margin-top: 4px;
+}

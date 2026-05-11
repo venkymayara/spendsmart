@@ -1,0 +1,59 @@
+<div class="transactions">
+  <div class="page-header">
+    <h2>Transactions</h2>
+    <span class="count">{{ filtered().length }} entries</span>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters">
+    <input
+      class="search"
+      type="text"
+      placeholder="Search transactions..."
+      (input)="onSearch($event)"
+    />
+    <div class="filter-group">
+      <button
+        *ngFor="let s of sources"
+        class="filter-btn"
+        [class.active]="selectedSource() === s"
+        (click)="setSource(s)">
+        {{ s }}
+      </button>
+    </div>
+    <div class="filter-group">
+      <button
+        *ngFor="let t of types"
+        class="filter-btn"
+        [class.active]="selectedType() === t"
+        (click)="setType(t)">
+        {{ t === 'All' ? 'All Types' : t }}
+      </button>
+    </div>
+  </div>
+
+  <!-- List -->
+  <div class="panel">
+    <div class="txn-item" *ngFor="let t of filtered()">
+      <div class="txn-icon">{{ t.icon }}</div>
+      <div class="txn-info">
+        <div class="txn-name">{{ t.name }}</div>
+        <div class="txn-meta">
+          <span class="source-dot" [style.background]="sourceColors[t.source]"></span>
+          {{ t.source }} · {{ t.category }} · {{ t.date }}
+        </div>
+      </div>
+      <div class="txn-amount" [class.debit]="t.type === 'debit'" [class.credit]="t.type === 'credit'">
+        {{ t.type === 'debit' ? '−' : '+' }}{{ t.amount | inr }}
+      </div>
+    </div>
+
+    <div class="empty" *ngIf="filtered().length === 0">
+      No transactions found.
+    </div>
+  </div>
+
+  <div class="total-row" *ngIf="filtered().length > 0">
+    Total spent (filtered): <strong>{{ totalDebit() | inr }}</strong>
+  </div>
+</div>

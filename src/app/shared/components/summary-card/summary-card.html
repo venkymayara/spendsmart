@@ -1,0 +1,6 @@
+<div class="card" [style.--accent]="accentColor">
+  <div class="label">{{ label }}</div>
+  <div class="value">{{ value }}</div>
+  <div class="sub" *ngIf="sub">{{ sub }}</div>
+  <span class="tag" [class]="'tag-' + tagType" *ngIf="tag">{{ tag }}</span>
+</div>
